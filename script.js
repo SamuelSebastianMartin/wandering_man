@@ -37,14 +37,25 @@ window.addEventListener("keyup", function(e){
 function movePlayer(){
   if (keys.includes("ArrowUp")){
     man.y -= man.speed;
+    if (man.y < 0) man.y = 0;
   }
   if (keys.includes("ArrowDown")){
     man.y += man.speed;
+    if (man.y + man.height > CANVAS_HEIGHT) man.y = CANVAS_HEIGHT - man.height;
   }
   if (keys.includes("ArrowLeft")){
     man.x -= man.speed;
+    if (man.x < 0) man.x = 0;
   }
   if (keys.includes("ArrowRight")){
     man.x += man.speed;
+    if (man.x + man.width > CANVAS_WIDTH) man.x = CANVAS_WIDTH - man.width;
+  }
+  if (keys.includes("a")){
+    man.speed ++;
+  }
+  if (keys.includes("z")){
+    man.speed --;
+    if (man.speed < 1) man.speed = 1;
   }
 }
